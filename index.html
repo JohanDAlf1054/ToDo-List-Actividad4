@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Aplicación web de lista de tareas hecha con HTML, CSS y JavaScript.">
-  <title>To-Do List</title>
+  <title>✍️ To-Do List</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -14,7 +14,29 @@
       <p class="app__subtitle">Organiza tu día de forma simple.</p>
     </header>
 
-    <!-- Aquí se agregarán el formulario y la lista de tareas -->
+    <form class="form-tarea" id="form-tarea" novalidate>
+      <label class="visually-hidden" for="input-tarea">Título de la tarea</label>
+      <input
+        class="form-tarea__input"
+        type="text"
+        id="input-tarea"
+        name="titulo"
+        placeholder="¿Qué necesitas hacer?"
+        autocomplete="off"
+        aria-describedby="mensaje-error"
+      >
+      <button class="btn btn--primary" type="submit">Agregar</button>
+    </form>
+    <p class="mensaje-error" id="mensaje-error" role="alert" hidden></p>
+
+    <section class="tareas" aria-label="Lista de tareas">
+      <ul class="tareas__lista" id="lista-tareas"></ul>
+
+      <div class="tareas__vacio" id="mensaje-vacio">
+        <span class="tareas__vacio-icono" aria-hidden="true">📝</span>
+        <p>No hay tareas registradas</p>
+      </div>
+    </section>
   </main>
 
   <script src="assets/js/script.js"></script>
