@@ -27,7 +27,14 @@
       <button class="btn btn--primary" type="submit">Agregar</button>
     </form>
 
-    <!-- Aquí se agregará la lista de tareas -->
+    <section class="tareas" aria-label="Lista de tareas">
+      <ul class="tareas__lista" id="lista-tareas"></ul>
+
+      <div class="tareas__vacio" id="mensaje-vacio">
+        <span class="tareas__vacio-icono" aria-hidden="true">📝</span>
+        <p>No hay tareas registradas</p>
+      </div>
+    </section>
   </main>
 
   <script src="assets/js/script.js"></script>
