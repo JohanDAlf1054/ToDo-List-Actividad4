@@ -92,6 +92,9 @@ function agregarTarea(titulo) {
     completada: false
   });
   renderizarTareas();
+
+  // Solo la tarea recién agregada lleva la animación de entrada
+  listaTareas.lastElementChild.classList.add('tarea--nueva');
 }
 
 /**
