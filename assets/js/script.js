@@ -55,11 +55,17 @@ function crearElementoTarea(tarea) {
   item.className = 'tarea';
   item.dataset.id = tarea.id;
 
+  const casilla = document.createElement('input');
+  casilla.type = 'checkbox';
+  casilla.className = 'tarea__casilla';
+  casilla.checked = tarea.completada;
+  casilla.setAttribute('aria-label', `Completada: ${tarea.titulo}`);
+
   const titulo = document.createElement('span');
   titulo.className = 'tarea__titulo';
   titulo.textContent = tarea.titulo;
 
-  item.appendChild(titulo);
+  item.append(casilla, titulo);
   return item;
 }
 
