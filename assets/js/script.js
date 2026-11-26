@@ -13,6 +13,38 @@ const formTarea = document.getElementById('form-tarea');
 const inputTarea = document.getElementById('input-tarea');
 const listaTareas = document.getElementById('lista-tareas');
 const mensajeVacio = document.getElementById('mensaje-vacio');
+const mensajeError = document.getElementById('mensaje-error');
+
+const MENSAJE_TITULO_VACIO = 'Escribe una tarea antes de agregar';
+
+/**
+ * Muestra un mensaje de error debajo del formulario.
+ */
+function mostrarError(mensaje) {
+  mensajeError.textContent = mensaje;
+  mensajeError.hidden = false;
+  inputTarea.classList.add('form-tarea__input--error');
+  inputTarea.setAttribute('aria-invalid', 'true');
+}
+
+/**
+ * Oculta el mensaje de error del formulario.
+ */
+function limpiarError() {
+  mensajeError.textContent = '';
+  mensajeError.hidden = true;
+  inputTarea.classList.remove('form-tarea__input--error');
+  inputTarea.removeAttribute('aria-invalid');
+}
+
+/**
+ * Valida el título de una tarea: no puede estar vacío ni contener solo espacios.
+ * Devuelve el título sin espacios sobrantes, o null si no es válido.
+ */
+function validarTitulo(titulo) {
+  const tituloLimpio = titulo.trim();
+  return tituloLimpio === '' ? null : tituloLimpio;
+}
 
 /**
  * Crea el elemento <li> que representa una tarea.
@@ -57,11 +89,23 @@ function agregarTarea(titulo) {
 formTarea.addEventListener('submit', (evento) => {
   evento.preventDefault();
 
-  agregarTarea(inputTarea.value);
+  const titulo = validarTitulo(inputTarea.value);
+
+  if (titulo === null) {
+    mostrarError(MENSAJE_TITULO_VACIO);
+    inputTarea.focus();
+    return;
+  }
+
+  limpiarError();
+  agregarTarea(titulo);
 
   inputTarea.value = '';
   inputTarea.focus();
 });
+
+// Al escribir, se oculta el mensaje de error
+inputTarea.addEventListener('input', limpiarError);
 
 // Estado inicial: sin tareas se muestra el mensaje de lista vacía
 renderizarTareas();

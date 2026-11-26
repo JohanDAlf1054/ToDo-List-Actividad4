@@ -147,6 +147,27 @@ body {
   box-shadow: 0 0 0 4px var(--color-primary-soft);
 }
 
+.form-tarea__input--error,
+.form-tarea__input--error:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 4px var(--color-danger-soft);
+}
+
+.mensaje-error {
+  margin: 0.625rem 0 0;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-danger);
+  background: var(--color-danger-soft);
+  border-radius: var(--radius-sm);
+  animation: tarea-entrada 0.2s ease;
+}
+
+.mensaje-error[hidden] {
+  display: none;
+}
+
 /* Lista de tareas ---------------------------------------------------------- */
 .tareas {
   margin-top: 1.5rem;

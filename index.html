@@ -23,9 +23,11 @@
         name="titulo"
         placeholder="¿Qué necesitas hacer?"
         autocomplete="off"
+        aria-describedby="mensaje-error"
       >
       <button class="btn btn--primary" type="submit">Agregar</button>
     </form>
+    <p class="mensaje-error" id="mensaje-error" role="alert" hidden></p>
 
     <section class="tareas" aria-label="Lista de tareas">
       <ul class="tareas__lista" id="lista-tareas"></ul>
