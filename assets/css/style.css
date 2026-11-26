@@ -224,6 +224,20 @@ body {
   overflow-wrap: anywhere;
 }
 
+/* Tarea completada */
+.tarea--completada {
+  background: var(--color-bg);
+}
+
+.tarea--completada .tarea__titulo {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.tarea--completada .tarea__casilla {
+  accent-color: var(--color-success);
+}
+
 @keyframes tarea-entrada {
   from {
     opacity: 0;
