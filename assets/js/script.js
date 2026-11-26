@@ -53,6 +53,7 @@ function validarTitulo(titulo) {
 function crearElementoTarea(tarea) {
   const item = document.createElement('li');
   item.className = 'tarea';
+  item.classList.toggle('tarea--completada', tarea.completada);
   item.dataset.id = tarea.id;
 
   const casilla = document.createElement('input');
@@ -60,6 +61,7 @@ function crearElementoTarea(tarea) {
   casilla.className = 'tarea__casilla';
   casilla.checked = tarea.completada;
   casilla.setAttribute('aria-label', `Completada: ${tarea.titulo}`);
+  casilla.addEventListener('change', () => alternarCompletada(tarea.id));
 
   const titulo = document.createElement('span');
   titulo.className = 'tarea__titulo';
@@ -90,6 +92,19 @@ function agregarTarea(titulo) {
     completada: false
   });
   renderizarTareas();
+}
+
+/**
+ * Alterna el estado completada de la tarea con el id indicado y redibuja la lista.
+ */
+function alternarCompletada(id) {
+  tareas = tareas.map((tarea) =>
+    tarea.id === id ? { ...tarea, completada: !tarea.completada } : tarea
+  );
+  renderizarTareas();
+
+  // Al redibujar se pierde el foco; se devuelve a la casilla para usar el teclado
+  listaTareas.querySelector(`[data-id="${id}"] .tarea__casilla`).focus();
 }
 
 formTarea.addEventListener('submit', (evento) => {
