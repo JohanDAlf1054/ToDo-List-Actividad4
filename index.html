@@ -14,7 +14,20 @@
       <p class="app__subtitle">Organiza tu día de forma simple.</p>
     </header>
 
-    <!-- Aquí se agregarán el formulario y la lista de tareas -->
+    <form class="form-tarea" id="form-tarea" novalidate>
+      <label class="visually-hidden" for="input-tarea">Título de la tarea</label>
+      <input
+        class="form-tarea__input"
+        type="text"
+        id="input-tarea"
+        name="titulo"
+        placeholder="¿Qué necesitas hacer?"
+        autocomplete="off"
+      >
+      <button class="btn btn--primary" type="submit">Agregar</button>
+    </form>
+
+    <!-- Aquí se agregará la lista de tareas -->
   </main>
 
   <script src="assets/js/script.js"></script>
